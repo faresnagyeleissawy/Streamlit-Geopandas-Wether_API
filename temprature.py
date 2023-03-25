@@ -42,7 +42,7 @@ def get_current_temperature(city):
 def addAttributesOptions(gfile):
     atts = gfile.columns
     tuAtts = tuple(" ")+tuple(atts)
-    attList = st.selectbox("choose the value column",tuAtts)
+    attList = st.selectbox("choose the value column",("temprature","humadity"))
     if not attList == " ":
         lat = gfile.geometry.y
         long = gfile.geometry.x
@@ -53,7 +53,6 @@ def addAttributesOptions(gfile):
             point = [lat[i],long[i],float(value[i])]
             data.append(point)
         map.add_heatmap(data)
-
 with st.sidebar:
     st.markdown("<h1 style='color: aqua; text-align: center;'>AS MAP</h1>", unsafe_allow_html=True)
 
@@ -66,17 +65,11 @@ with st.sidebar:
     city = st.text_input("Enter a city name:")
     if city:
         get_current_temperature(city)
-
-
-
     cities = st.file_uploader("Upload a GeoJSON file for the heatmap", type="geojson")
-
     if cities:
         gfile = gpd.read_file(cities)
         heat_data = [[row["geometry"].y, row["geometry"].x, row["temprature"]] for index, row in gfile.iterrows()]
         addAttributesOptions(gfile)
-        
-
         if not city or cities:
             map.set_center(31.,30.0444,zoom=6)
 
