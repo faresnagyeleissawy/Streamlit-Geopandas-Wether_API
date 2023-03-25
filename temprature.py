@@ -55,9 +55,9 @@ def addAttributesOptions(gfile):
         map.add_heatmap(data)
 
 with st.sidebar:
-    st.sidebar.markdown("<h2 style='color: white; font-size: 16px; text-align: center;'>User guide</h2>", unsafe_allow_html=True)
+
     st.sidebar.markdown("<br>", unsafe_allow_html=True)
-    st.sidebar.markdown("<p style='color: gray; font-size: 14px; text-align: center;'>Life Wether Data For Cities.</p>", unsafe_allow_html=True)
+    st.sidebar.markdown("<p style='color: gray; font-size: 18px; text-align: center;'>Life Wether Data For Cities.</p>", unsafe_allow_html=True)
     st.markdown("<h1 style='color: aqua; text-align: center;'>AS MAP</h1>", unsafe_allow_html=True)
 
     baseList = st.selectbox("Choose your Basemap", ("Open Street Map", "Google HYBRID"))
